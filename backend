@@ -1,0 +1,44 @@
+package com.example.currencyconversionrupee_doller;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import java.text.DecimalFormat;
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        Button buttonConvDtoR= (Button) findViewById(R.id.buttonConvDtoR);
+        buttonConvDtoR.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText TextBoxMiles = (EditText) findViewById(R.id.editTextDoller);
+                EditText TextBoxKm = (EditText) findViewById(R.id.editTextRupee);
+                double vDoller= Double.valueOf(TextBoxMiles.getText().toString());
+                double vRupee= vDoller / 0.013200 ;
+                DecimalFormat formatVal = new DecimalFormat("##.##");
+                TextBoxKm.setText(formatVal.format(vRupee));
+
+            }
+        });
+        Button buttonConvRtoD = (Button) findViewById(R.id.buttonConvRtoD);
+        buttonConvRtoD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText TextBoxMiles = (EditText) findViewById(R.id.editTextDoller);
+                EditText TextBoxKm = (EditText) findViewById(R.id.editTextRupee);
+                double vRupee= Double.valueOf(TextBoxKm.getText().toString());
+                double vDoller= vRupee* 0.013200  ;
+                DecimalFormat formatVal = new DecimalFormat("##.##");
+                TextBoxMiles.setText(formatVal.format(vDoller));
+
+            }
+        });
+    }
+}
